@@ -8,7 +8,7 @@ OWNER_ID = 8026801357
 
 # Default Messages / Buttons (overridden by /settings)
 DEFAULT_SETTINGS = {
-    "start_pic": "https://telegra.ph/file/3cfd0a0ab8e1234567890.jpg",
+    "start_pic": "",
     "start_msg": (
         "👋 **Hey {name}!**\n\n"
         "Welcome to the Contact Bot.\n"
