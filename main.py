@@ -108,6 +108,20 @@ async def remove_admin(client, message):
             await message.reply_text("User is not an admin.")
     except:
         await message.reply_text("Invalid user ID.")
+   
+@bot.on_message(filters.text & ~filters.command(["start", "help"]))
+    async def handle_contact(_, m: Message):
+    await add_user(m.from_user.id)
+    async for admin in admins_col.find({}):
+        await app.send_message(
+            admin["user_id"],
+            f"📬 **New Message from** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n\n💬 {m.text}",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("💭 Reply", callback_data=f"reply_{m.from_user.id}")]
+            ])
+        )
+    await app.send_message(OWNER_ID, f"📨 Message from {m.from_user.id}: {m.text}")
+    await m.reply_text("✅ Your message has been sent to the admin.")
 
 # Run bot
 print("Bot is running...")
