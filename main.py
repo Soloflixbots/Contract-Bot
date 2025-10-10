@@ -19,7 +19,7 @@ async def start(client, message):
     await message.reply_photo(photo=START_PIC, caption=text)
 
 # Help command
-@bot.on_message(filters.command("help") & ~filters.edited)
+@bot.on_message(filters.command("help") & ~filters.incoming)
 async def help_msg(client, message):
     text = (
         "Commands available:\n"
