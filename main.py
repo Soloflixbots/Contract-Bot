@@ -12,7 +12,7 @@ users_col = db["users"]
 bot = Client("contact_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 # Start command
-@bot.on_message(filters.command("start") & ~filters.edited)
+@bot.on_message(filters.command("start") & ~filters.incoming)
 async def start(client, message):
     users_col.update_one({"user_id": message.from_user.id}, {"$set": {"user_id": message.from_user.id}}, upsert=True)
     text = "Hey there! Welcome to the contact bot.\n\nUse /help to see commands."
