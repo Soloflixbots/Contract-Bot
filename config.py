@@ -1,16 +1,16 @@
 # Telegram API setup
-API_ID = 123456               # Your Telegram API ID
-API_HASH = "your_api_hash"    # Your Telegram API hash
-BOT_TOKEN = "your_bot_token"  # Your bot token from @BotFather
+API_ID = 22884130               # Your Telegram API ID
+API_HASH = "a69e8b16dac958f1bd31eee360ec53fa"    # Your Telegram API hash
+BOT_TOKEN = "8100230392:AAEO3UIwnfVPIfgs8KS-5MKsCsPEBiLu1mg"  # Your bot token from @BotFather
 
 # MongoDB setup
-MONGO_URI = "your_mongodb_uri"  # Your MongoDB connection URI
+MONGO_URI = "mongodb+srv://yoyat19687:byRateKzeofLw90e@cluster0.ysszzi9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  # Your MongoDB connection URI
 
 # Bot settings
-OWNER_ID = 123456789          # Your Telegram ID (owner)
+OWNER_ID = 8026801357         # Your Telegram ID (owner)
 
 # Start / Help customization
-START_PIC = "https://telegra.ph/file/3cfd0a0ab8e1234567890.jpg"  # image link (can be from telegraph)
+START_PIC = "https://graph.org/file/ebec9517dcb8ce2645ee6-f78863ff31185ca41b.jpg"  # image link (can be from telegraph)
 START_MSG = (
     "👋 **Hey {name}!**\n\n"
     "Welcome to the Contact Bot.\n"
