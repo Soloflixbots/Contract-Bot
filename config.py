@@ -8,7 +8,7 @@ OWNER_ID = 8026801357
 
 # Default Messages / Buttons (overridden by /settings)
 DEFAULT_SETTINGS = {
-    "start_pic": "",
+    "start_pic": "https://graph.org/file/ebec9517dcb8ce2645ee6-f78863ff31185ca41b.jpg",
     "start_msg": (
         "👋 **Hey {name}!**\n\n"
         "Welcome to the Contact Bot.\n"
