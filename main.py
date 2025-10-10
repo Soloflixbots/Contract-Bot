@@ -11,28 +11,34 @@ users_col = db["users"]
 # Initialize bot
 bot = Client("contact_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
-# Start command
-@bot.on_message(filters.command("start") & ~filters.incoming)
+# start
+@bot.on_message(filters.command("start") & filters.private)
 async def start(client, message):
-    users_col.update_one({"user_id": message.from_user.id}, {"$set": {"user_id": message.from_user.id}}, upsert=True)
-    text = "Hey there! Welcome to the contact bot.\n\nUse /help to see commands."
+    users_col.update_one(
+        {"user_id": message.from_user.id},
+        {"$set": {"user_id": message.from_user.id, "first_name": message.from_user.first_name}},
+        upsert=True
+    )
+    text = "👋 Hey there! Welcome to the Contact Bot.\n\nUse /help to see commands."
     await message.reply_photo(photo=START_PIC, caption=text)
 
-# Help command
-@bot.on_message(filters.command("help") & ~filters.incoming)
+# /help
+@bot.on_message(filters.command("help") & filters.private)
 async def help_msg(client, message):
     text = (
-        "Commands available:\n"
+        "🛠️ Commands available:\n\n"
+        "👤 User Commands:\n"
         "/start - Start the bot\n"
-        "/help - Show this help message\n"
-        "/reply - Reply to a user (admin only)\n"
-        "/broadcast - Broadcast message (admin only)\n"
-        "/users - Show total users (admin only)\n"
-        "/add_admin - Add admin (admin only)\n"
-        "/rev_admin - Remove admin (admin only)"
+        "/help - Show this help message\n\n"
+        "🛡️ Admin Commands:\n"
+        "/reply - Reply to a user\n"
+        "/broadcast - Broadcast message\n"
+        "/users - Show total users\n"
+        "/add_admin - Add admin\n"
+        "/rev_admin - Remove admin"
     )
     await message.reply_photo(photo=HELP_PIC, caption=text)
-
+    
 # Reply command (admin only)
 @bot.on_message(filters.command("reply") & filters.user(ADMINS))
 async def reply_msg(client, message):
